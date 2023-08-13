@@ -1,0 +1,9 @@
+.books {
+
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* margin: 30px; */
+}
