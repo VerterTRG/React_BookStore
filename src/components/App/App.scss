@@ -14,3 +14,13 @@
       color: #4cbbbb;
     }
 }
+
+body[data-theme="light"] .app {
+  background-color: #282c34;
+  color: white;
+}
+
+body[data-theme="dark"] .app {
+  background-color: white;
+  color: black;
+}
