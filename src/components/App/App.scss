@@ -9,11 +9,18 @@
   color: white;
   max-width: 1200px;
   margin: auto;
+
   /* padding: 30px; */
-    a {
-      color: #4cbbbb;
-    }
+  .container {
+    margin: 20px 50px;
+  }
+
+  a {
+    color: #4cbbbb;
+
+  }
 }
+
 
 body[data-theme="light"] .app {
   background-color: #282c34;
