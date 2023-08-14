@@ -33,9 +33,11 @@ const BookDetail = () => {
     title,
     authors,
     description,
-    imageLinks: { thumbnail },
+    ...data
   } = book.volumeInfo;
 
+  const thumbnail = data.imageLinks && data.imageLinks.thumbnail
+  
   return (
     <div className="book">
       {title && <h1>{title}</h1>}
