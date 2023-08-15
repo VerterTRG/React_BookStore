@@ -4,13 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { getBookBySearchTerm } from "../../api/booksApi";
+import Pagination from "../Pagination/Pagination";
 
 const BookList = ({ search, onSelectBook }) => {
   const [books, setBooks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (search) {
-      getBookBySearchTerm(search)
+      getBookBySearchTerm(search, currentPage)
         .then((resp) => {
           if (resp.data.items) {
             setBooks(resp.data.items);
@@ -20,7 +22,7 @@ const BookList = ({ search, onSelectBook }) => {
         })
         .catch((err) => console.log(err));
     }
-  }, [search]);
+  }, [search, currentPage]);
 
   const memorizeBook = useMemo(() => 
     books.map((book, index) => (
@@ -35,6 +37,7 @@ const BookList = ({ search, onSelectBook }) => {
     <div className="books">
       <h1>Books</h1>
       <ul>{memorizeBook}</ul>
+      <Pagination currentPage={currentPage} udpdatePage={setCurrentPage} />
     </div>
   );
 };
