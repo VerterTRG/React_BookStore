@@ -29,7 +29,7 @@ const SearchBar = () => {
     sortedValues.unshift("> Language <")
 
     const handleClick = (e) => {
-      // console.log(`${e.target.name}:${e.target.value}`)
+      console.log(`${e.target.name}:${e.target.value}`)
       setLanguage(e.target.value)
     }
 

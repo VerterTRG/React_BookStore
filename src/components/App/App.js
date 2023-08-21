@@ -12,7 +12,8 @@ import Header from "../Header/Header";
 
 function App() {
   const [search, setSearch] = useState("");
-  const [language, setLanguage] = useState("")
+  const [language, setLanguage] = useState("");
+  // const [filters, setFilters] = useState({}); // if should be add other filters
   const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {

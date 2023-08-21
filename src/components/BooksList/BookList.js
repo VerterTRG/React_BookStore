@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import { getBookBySearchTerm } from "../../api/booksApi";
 import Pagination from "../Pagination/Pagination";
 import { SearchContext } from "../../context";
+import withClickLogger from "../HOC/withClickLogger";
 
-const BookList = () => {
+const BookList = ({ onClick }) => {
   const { search, language } = useContext(SearchContext)
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +32,7 @@ const BookList = () => {
 
   const memorizeBook = useMemo(() =>
     books.map((book, index) => (
-      <li key={index}>
+      <li key={index} onClick={() => onClick(book.id)}>
         <Link to={`/book/${book.id}`} title={book.volumeInfo.title}>
           {book.volumeInfo.title}
         </Link>
@@ -40,7 +41,7 @@ const BookList = () => {
 
   return (
     <div className="books">
-      <h1>Books</h1>
+      {!!books.length && (<h1>Books</h1>)}
       <ul>{memorizeBook}</ul>
       {search && !!books.length && (
         <Pagination
@@ -52,4 +53,4 @@ const BookList = () => {
   );
 };
 
-export default BookList;
+export default withClickLogger(BookList);
