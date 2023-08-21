@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [language, setLanguage] = useState("")
   const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
@@ -20,13 +21,13 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <SearchContext.Provider value={{ search, setSearch }}>
+      <SearchContext.Provider value={{ search, setSearch, language, setLanguage }}>
         <BrowserRouter>
           <div className="app">
             <Header />
             <div className="container">
               <Routes>
-                <Route path="/" element={<BookList search={search} />} />
+                <Route path="/" element={<BookList />} />
                 <Route path="/book/:bookId" element={<BookDetail />} />
                 <Route path="/about" element={<About />} />
 
